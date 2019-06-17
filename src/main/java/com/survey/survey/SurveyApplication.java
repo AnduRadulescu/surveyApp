@@ -1,25 +1,47 @@
 package com.survey.survey;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class SurveyApplication extends Application {
 
+    private ConfigurableApplicationContext springContext;
+    private Parent rootNode;
+    private FXMLLoader fxmlLoader;
+
     public static void main(String[] args) {
-        SpringApplication.run(SurveyApplication.class, args);
+        launch(args);
+    }
+
+    @Override
+    public void init() throws Exception {
+        springContext = SpringApplication.run(SurveyApplication.class);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(springContext::getBean);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        fxmlLoader.setLocation(getClass().getResource("/fxml/login.fxml"));
+        rootNode = fxmlLoader.load();
+
+        primaryStage.setTitle("Hello World");
+        Scene scene = new Scene(rootNode, 800, 600);
+        primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() {
+        springContext.stop();
     }
 }
