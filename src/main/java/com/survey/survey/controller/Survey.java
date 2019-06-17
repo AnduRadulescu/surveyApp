@@ -1,5 +1,7 @@
 package com.survey.survey.controller;
 
+import com.survey.survey.model.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -19,7 +21,7 @@ public class Survey {
     @FXML
     public ChoiceBox workChoiceBox;
     @FXML
-    public ChoiceBox specChoiceBox;
+    public TextField specChoiceBox;
     @FXML
     public TextField jobText;
     @FXML
@@ -32,4 +34,16 @@ public class Survey {
     public ChoiceBox studyChoice;
     @FXML
     public TextField whishedText;
+
+
+    public void onSubmit(ActionEvent actionEvent) {
+
+    }
+
+    void initialize() {
+    }
+
+    void initData(User user) {
+        System.out.println(user);
+    }
 }

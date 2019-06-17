@@ -46,11 +46,16 @@ public class Login implements ApplicationContextAware {
             return;
         } else {
             User user = userRepository.findByUserNameAndPassword(userText.getText(), passwordText.getText());
+            if (user == null) {
+                user.setPassword(passwordText.getText());
+                user.setUserName(userText.getText());
+                user = userRepository.save(user);
+            }
             switch (choiceBox.getValue().toString()) {
                 case "Student":
                     System.out.println("student");
                     //load fxml
-                    openSurveyWindow(actionEvent);
+                    openSurveyWindow(actionEvent, user);
                     break;
                 case "Administrator":
                     System.out.println("Administrator");
@@ -76,12 +81,15 @@ public class Login implements ApplicationContextAware {
         return context.getBean(type);
     }
 
-    private void openSurveyWindow(Event event) throws IOException {
+    private void openSurveyWindow(Event event, User user) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/survey.fxml/"));
         loader.setControllerFactory(this::createControllerForType);
         Parent rootNode = loader.load();
         Scene scene = new Scene(rootNode);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Survey controller =
+                loader.<Survey>getController();
+        controller.initData(user);
         stage.setScene(scene);
     }
 }

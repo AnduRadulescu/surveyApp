@@ -16,6 +16,10 @@ public class User {
     private String userName;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "survey_id", referencedColumnName = "id")
+    private Survey survey;
+
 
     public User(long id, String userName, String password) {
         this.id = id;
@@ -50,6 +54,14 @@ public class User {
         this.password = password;
     }
 
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(Survey survey) {
+        this.survey = survey;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,6 +82,7 @@ public class User {
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", survey=" + survey +
                 '}';
     }
 }
