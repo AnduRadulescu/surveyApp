@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.survey.survey.Survey">
+   <children>
+      <Label layoutX="103.0" layoutY="94.0" text="Email" />
+      <Label layoutX="103.0" layoutY="146.0" text="Phone Number" />
+      <Label layoutX="104.0" layoutY="203.0" text="University" />
+      <Label layoutX="104.0" layoutY="257.0" text="Specialization" />
+      <Label layoutX="104.0" layoutY="316.0" text="Working-situation" />
+      <Label layoutX="104.0" layoutY="377.0" text="Job Name" />
+      <Label layoutX="104.0" layoutY="432.0" text="Job Type" />
+      <Label layoutX="104.0" layoutY="496.0" text="Company Name" />
+      <Label layoutX="104.0" layoutY="552.0" text="Company City" />
+      <Label layoutX="104.0" layoutY="614.0" text="Study situation" />
+      <Label layoutX="104.0" layoutY="666.0" text="Wished" />
+      <TextField fx:id="emailText" layoutX="320.0" layoutY="86.0" />
+      <TextField fx:id="nrText" layoutX="320.0" layoutY="138.0" />
+      <TextField fx:id="uniText" layoutX="320.0" layoutY="195.0" />
+      <ChoiceBox fx:id="workChoiceBox" layoutX="320.0" layoutY="308.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="specChoiceBox" layoutX="320.0" layoutY="249.0" prefWidth="150.0" />
+      <TextField fx:id="jobText" layoutX="321.0" layoutY="369.0" />
+      <ChoiceBox fx:id="jobChoiceBox" layoutX="320.0" layoutY="424.0" prefWidth="150.0" />
+      <TextField fx:id="compNameText" layoutX="320.0" layoutY="488.0" />
+      <TextField fx:id="compCityText" layoutX="321.0" layoutY="544.0" />
+      <ChoiceBox fx:id="studyChoice" layoutX="320.0" layoutY="606.0" prefWidth="150.0" />
+      <TextField fx:id="whishedText" layoutX="321.0" layoutY="658.0" />
+   </children>
+</AnchorPane>
